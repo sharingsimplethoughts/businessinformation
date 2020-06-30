@@ -1,0 +1,198 @@
+<app-header></app-header>
+<div class="layout-main">
+  <app-left-sidebar></app-left-sidebar>
+  <div class="profilePage"></div>
+  <div class="layout-content">
+    <div class="layout-content-body">
+      <div class="title-bar">
+        <h1 class="title-bar-title">
+          <span class="d-ib">Edit Sub Admin Details </span>
+          <!-- <a routerLink="/home/profile" class="h5 pull-right text-primary">Back to Sub-admin management</a> -->
+        </h1>
+      </div>
+      <div class="col-md-8 card panel-body" style="box-shadow: 0px 0px 14px #999;">
+        <div class="demo-form-wrapper">
+          <p *ngIf="errorMessage">{{errorMessage}}</p>
+          <form class="form" [formGroup]="adsubadminForm" (ngSubmit)="onSubmit()" autocomplete="off">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class=" control-label">Country Admin ID</label>
+                  <input class="form-control" type="text" formControlName="countryAdminId" (ngClass)="{'is-invalid': submitted && f.countryAdminId.errors}">
+                  <div *ngIf="submitted && f.countryAdminId.errors" class="invalid-feedback">
+                    <div *ngIf="f.countryAdminId.errors.required">Country Admin Id is required.</div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class=" control-label">User Name</label>
+                  <input class="form-control" type="text" formControlName="name" (ngClass)="{'is-invalid': submitted && f.name.errors}">
+                  <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                    <div *ngIf="f.name.errors.required">Name is required.</div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label">Email ID</label>
+                  <input class="form-control" type="email" formControlName="email" (ngClass)="{'is-invalid': submitted && f.email.errors}">
+                  <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                    <div *ngIf="f.email.errors.required">Email is required.</div>
+                    <div *ngIf="f.email.errors.email">Enter must be a valid email address.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class=" control-label">Mobile Number</label>
+                  <input class="form-control" type="tel" formControlName="phone" (ngClass)="{'is-invalid': submitted && f.phone.errors}">
+                  <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+                    <div *ngIf="f.phone.errors.required">Mobile number is required.</div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class=" control-label">Select Country</label>
+                  <!-- <select class="form-control" formControlName="country" (ngClass)="{'is-invalid': submitted && f.region.errors}">
+                    <option hidden=""></option>
+                    <option *ngFor="let country of country" value={{country}}>
+                      {{country}}
+                    </option>
+                  </select> -->
+                  <mat-select-country  class="countryList" (onCountrySelected)="onCountrySelected($event)"></mat-select-country>
+                  <!-- <mat-select-country  class="countryList" selectedCountry = 'selectedCountry' (onCountrySelected)="onCountrySelected($event)"></mat-select-country> -->
+                </div>
+                <div class="form-group">
+                  <label class=" control-label">Select Role</label>
+                  <select class="form-control" formControlName="role" (ngClass)="{'is-invalid': submitted && f.role.errors}">
+                    <option hidden=""></option>
+                    <option *ngFor="let role of role" value={{role}}>
+                      {{role}}
+                    </option>
+                  </select>
+                </div>
+              </div>            
+              <div class="col-sm-12 mt-2">
+                <h5>Module Access Given</h5>
+              </div>
+              <div class="col-xs-6 col-sm-4 col-md-4 mb-3">
+                <label class="custom-control custom-control-primary custom-checkbox">
+                  <input class="custom-control-input" type="checkbox">
+                  <span class="custom-control-indicator"></span>
+                  <span class="custom-control-label">Dashboard</span>
+                </label>
+              </div>
+              <div class="col-xs-6 col-sm-4 col-md-4 mb-3">
+                <label class="custom-control custom-control-primary custom-checkbox">
+                  <input class="custom-control-input" type="checkbox">
+                  <span class="custom-control-indicator"></span>
+                  <span class="custom-control-label">User management</span>
+                </label>
+              </div>
+              <div class="col-xs-6 col-sm-4 col-md-4 mb-3">
+                <label class="custom-control custom-control-primary custom-checkbox">
+                  <input class="custom-control-input" type="checkbox">
+                  <span class="custom-control-indicator"></span>
+                  <span class="custom-control-label">Language management</span>
+                </label>
+              </div>
+              <div class="col-xs-6 col-sm-4 col-md-4 mb-3">
+                <label class="custom-control custom-control-primary custom-checkbox">
+                  <input class="custom-control-input" type="checkbox">
+                  <span class="custom-control-indicator"></span>
+                  <span class="custom-control-label">Support management</span>
+                </label>
+              </div>
+              <div class="col-xs-6 col-sm-4 col-md-4 mb-3">
+                <label class="custom-control custom-control-primary custom-checkbox">
+                  <input class="custom-control-input" type="checkbox">
+                  <span class="custom-control-indicator"></span>
+                  <span class="custom-control-label">Business management</span>
+                </label>
+              </div>
+              <div class="col-xs-6 col-sm-4 col-md-4 mb-3">
+                <label class="custom-control custom-control-primary custom-checkbox">
+                  <input class="custom-control-input" type="checkbox">
+                  <span class="custom-control-indicator"></span>
+                  <span class="custom-control-label">Event management</span>
+                </label>
+              </div>
+
+              <div class="col-sm-12 mt-2">
+                <h5>Add Module Access</h5>
+              </div>
+
+              <div class="col-xs-6 col-sm-4 col-md-4 mb-3">
+                <label class="custom-control custom-control-primary custom-checkbox">
+                  <input class="custom-control-input" type="checkbox">
+                  <span class="custom-control-indicator"></span>
+                  <span class="custom-control-label">Report Generate management</span>
+                </label>
+              </div>
+              <div class="col-xs-6 col-sm-4 col-md-4 mb-3">
+                <label class="custom-control custom-control-primary custom-checkbox">
+                  <input class="custom-control-input" type="checkbox">
+                  <span class="custom-control-indicator"></span>
+                  <span class="custom-control-label">Category management</span>
+                </label>
+              </div>
+              <div class="col-xs-6 col-sm-4 col-md-4 mb-3">
+                <label class="custom-control custom-control-primary custom-checkbox">
+                  <input class="custom-control-input" type="checkbox">
+                  <span class="custom-control-indicator"></span>
+                  <span class="custom-control-label">Notification management</span>
+                </label>
+              </div>
+              <div class="col-xs-6 col-sm-4 col-md-4 mb-3">
+                <label class="custom-control custom-control-primary custom-checkbox">
+                  <input class="custom-control-input" type="checkbox">
+                  <span class="custom-control-indicator"></span>
+                  <span class="custom-control-label">Setting</span>
+                </label>
+              </div>
+              <div class="col-sm-12 mt-2">
+                <div class="form-group">
+                  <button class="btn btn-primary" type="button" routerLink="/home/view-sub-admin-management">Submit</button>
+                  <button class="btn btn-danger" type="button" routerLink="/home/view-sub-admin-management">Cancel</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>
+
+
+<!-- Modal -->
+<div class="modal fade" id="success-modal">
+  <div class="modal-dialog modal-sm" data-dismiss="modal">
+    <div class="modal-content">
+      <div class="modal-body text-center">
+        <h2><i class="fa fa-check-circle text-success"></i></h2>
+        <h5>{{successMessage}}!</h5>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="access-modal">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label>Give Login ID</label>
+            <input type="text" class="form-control"/>
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" class="form-control"/>
+          </div>
+          <div class="text-center">
+            <button type="button" class="btn btn-primary btn-sm"  data-dismiss="modal">Save</button>
+            <button type="button" class="btn btn-danger btn-sm"  data-dismiss="modal">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

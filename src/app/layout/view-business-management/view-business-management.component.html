@@ -1,0 +1,82 @@
+<app-header></app-header>
+<div class="layout-main">
+  <app-left-sidebar></app-left-sidebar>
+  <div class="subadminPage"></div>
+  <div class="layout-content">
+    <div class="layout-content-body">
+      <div class="title-bar">
+        <h1 class="title-bar-title">
+          <span class="d-ib">View Business Management </span>
+          <!-- <a routerLink="/home/profile" class="h5 pull-right text-primary">Back to Sub-admin management</a> -->
+        </h1>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 card panel-body" style="box-shadow: 0px 0px 14px #999;">
+        <div class="demo-form-wrapper">
+          <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6">
+              <label class=" control-label">Business ID</label>
+              <p>{{bussdetail.id}}</p>
+              <label class=" control-label">Business Name</label>
+              <p>{{bussdetail.business_name}}</p>
+              <label class=" control-label">Business Category</label>
+              <p>{{bussdetail.business_category_name}}</p>              
+              <label class=" control-label">Business Sub-Category</label>
+              <p>{{bussdetail.business_subcategory_name}}</p>
+              <label class="control-label">Business Email ID</label>
+              <p>{{bussdetail.business_email}}</p>
+              <label class=" control-label">Business Mobile Number</label>
+              <p>{{bussdetail.business_contact_number}}</p>
+              <label class=" control-label">Business Rating</label>
+              <p>{{bussdetail.rating}}</p>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6">
+              <label class=" control-label">Business Location</label>
+              <!-- <p>Delhi, India</p>               -->
+<agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
+    <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+    </agm-map>
+            </div>
+            
+            <div class="col-xs-12 col-sm-12 col-md-12">
+              <h5 class="mt-3">Business Timings</h5>
+              <p>
+                <label *ngIf="bussdetail.business_days.includes('0')" class="mr-2">S</label>             
+                <label *ngIf="bussdetail.business_days.includes('1')" class="mr-2">M</label>             
+                <label *ngIf="bussdetail.business_days.includes('2')" class="mr-2">T</label>              
+                <label *ngIf="bussdetail.business_days.includes('3')" class="mr-2">W</label>              
+                <label *ngIf="bussdetail.business_days.includes('4')" class="mr-2">T</label>              
+                <label *ngIf="bussdetail.business_days.includes('5')" class="mr-2">F</label>              
+                <label *ngIf="bussdetail.business_days.includes('6')" class="mr-2">S</label>
+              </p>
+              <label class=" control-label">Business Time</label>
+              <p>{{bussdetail.time_from}} - {{bussdetail.time_to}}</p>
+              <p>
+                <label class="avatar-file sq-100 mb-3 mr-3">
+                  <img *ngIf="bussdetail.business_image1" src="http://ip{{bussdetail.business_image1}}"/>
+                  <img *ngIf="!bussdetail.business_image1" src="assets/img/user1.jpg"/>
+                </label>
+                <label class="avatar-file sq-100 mb-3 mr-3">
+                  <img *ngIf="bussdetail.business_image2" src="http://ip{{bussdetail.business_image2}}"/>
+                  <img *ngIf="!bussdetail.business_image2" src="assets/img/user1.jpg"/>
+                </label>
+                <label class="avatar-file sq-100 mb-3 mr-3">
+                  <img *ngIf="bussdetail.business_image3" src="http://ip{{bussdetail.business_image3}}"/>
+                  <img *ngIf="!bussdetail.business_image3" src="assets/img/user1.jpg"/>
+                </label>
+                <label class="avatar-file sq-100 mb-3 mr-3">
+                  <img *ngIf="bussdetail.business_image4" src="http://ip{{bussdetail.business_image4}}"/>
+                  <img *ngIf="!bussdetail.business_image4" src="assets/img/user1.jpg"/>
+                </label>
+              </p>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+              <label class=" control-label">Business Description</label>
+              <p>{{bussdetail.business_description}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

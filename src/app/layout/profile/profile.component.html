@@ -1,0 +1,75 @@
+<app-header></app-header>
+<div class="layout-main">
+<app-left-sidebar></app-left-sidebar>
+<div class="profilePage"></div>
+<div class="layout-content">
+  <div class="row gutter-xs">
+    <div class="profile-box">
+      <div class="card">
+        <div class="card-image">
+          <div class="overlay">
+            <div class="overlay-gradient">
+              <img class="card-img-top img-responsive" src={{profileimg}} alt="Instagram App">
+            </div>
+          </div>
+        </div>
+        <div class="card-avatar">
+          <a class="card-thumbnail rounded sq-100" href="javasrcipt:void(0)">
+            <img class="img-responsive" src={{profileimg}} alt="Instagram">
+          </a>
+        </div>
+        <div class="card-body">
+          <h4 class="text-center m-b-20">{{currentUser.fullname}}</h4>
+          <!-- <h4 class="text-center m-b-20">{{currentUser.name}}</h4> -->
+          <div class="row">
+            <div class="col-sm-12 col-md-6">
+              <label>
+                <span class="icon icon-envelope m-r-5"></span>
+                <strong>Email</strong>
+              </label>
+              <p>{{currentUser.email}}</p>
+              <!-- <p>{{currentUser.email}}</p> -->
+            </div>
+            <div class="col-sm-12 col-md-6">
+              <label>
+                <span class="icon icon-phone m-r-5"></span>
+                <strong>Mobile Number</strong>
+              </label>
+              <p>{{currentUser.mobile_number || 'NA'}}</p>
+              <!-- <p>{{currentUser.phone}}</p> -->
+            </div>
+            <!-- <div class="col-sm-12 col-md-6">
+              <label>
+                <span class="icon icon-map-marker m-r-5"></span>
+                <strong>Address</strong>
+              </label>
+              <p>Delhi</p>
+              
+            </div> -->
+            <!-- <div class="col-sm-12 col-md-6">
+              <label>
+                <span class="icon icon-map-marker m-r-5"></span>
+                <strong>Region</strong>
+              </label>
+              <p>India</p>
+              
+            </div> -->
+            <!-- <div class="col-sm-12 col-md-12">
+              <label>
+                <span class="icon icon-commenting m-r-5"></span>
+                <strong>Description</strong>
+              </label>
+              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit iusto itaque.</p>
+              <p>{{currentUser.description}}</p>
+            </div> -->
+            <div class="col-md-12 text-center">
+              <button class="btn btn-primary btn-sm mr-5" type="button" routerLink="/home/edit-profile">Edit profile</button>  
+              <button class="btn btn-primary btn-sm" type="button" routerLink="/home/change-password">Change Password</button> 
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

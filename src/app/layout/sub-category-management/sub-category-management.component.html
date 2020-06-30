@@ -1,0 +1,437 @@
+<app-header></app-header>
+<div class="layout-main">
+  <app-left-sidebar></app-left-sidebar>
+  <div class="subadminPage"></div>
+  <div class="sellerListPage ExplorerListPage">
+    <div class="layout-content">
+      <div class="layout-content-body">
+        <div class="title-bar">
+          <h1 class="title-bar-title">
+            <span class="d-ib">Subcategory Management</span>
+          </h1>
+        </div>
+        <div class="col-md-12">
+          <span style="color:red;margin-top: 5px">{{errormessage}}</span>
+        </div>
+        <div class="col-md-12">
+          <span style="color:green;margin-top: 5px">{{successmessage}}</span>
+        </div>
+        <div class="row gutter-xs">
+          <div class="col-xs-12">
+            <div class="card">
+              <div class="card-body">
+                <div class="row gutter-xs">
+                  <!-- <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 form-group">
+                    <label>From : </label> 
+                    <div class="date">
+                      <ng-datepicker class="w-100" (ngModelChange)="fromDate($event)" [(ngModel)]="fromdate" [options]="optionsFrom" [ngModelOptions]="{standalone: true}"></ng-datepicker>
+                      <i class="fa fa-calendar ml-2 fs-18"></i>
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 form-group">
+                    <label>To : </label>  
+                    <div class="date">
+                      <ng-datepicker class="w-100" [(ngModel)]="todate" [options]="optionsTo" [ngModelOptions]="{standalone: true}"></ng-datepicker>
+                      <i class="fa fa-calendar ml-2 fs-18"></i>
+                    </div>
+                  </div>
+                  <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4 form-group">
+                    <label>City</label>
+                    <select class="form-control">
+                      <option value="All">All</option>
+                      <option value="Restaurant">Restaurant</option>
+                      <option value="Bakery">Bakery</option>
+                      <option value="Freelancer">Freelancer</option>
+                    </select>
+                  </div> -->
+                  <div class="col-xs-12 col-sm-5 col-md-4 col-lg-4 form-group">
+                    <div class="form-group">
+                      <div fxLayout fxLayoutAlign="center center" class="table-search">
+                        <mat-form-field fxFlex="100%">
+                          <input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="Search by ID or Name">
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-7 col-md-8 col-lg-8 form-group">
+                    <!-- <input type="file" style="display: inline-block;" (change)="incomingfile($event)" placeholder="Upload file" accept=".xlsx">
+                    <button type="button" class="btn btn-md btn-info" (click)="importData()">Import</button> -->
+                    <button type="button" class="btn btn-md btn-success" (click)="exportData()">Export</button>
+                    <button type="button" class="btn btn-md btn-primary" data-target="#add-modal" data-toggle="modal">Add Subcategory</button>
+                  </div>
+                  <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="table-responsive" #TABLE>
+                      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 table table-striped table-bordered">
+                        <!-- <ng-container matColumnDef="checkbox">
+                          <th mat-header-cell *matHeaderCellDef class="wpx-40"> 
+                            <label class="custom-control custom-control-primary custom-checkbox">
+                              <input class="custom-control-input" type="checkbox" id="checkAll">
+                              <span class="custom-control-indicator"></span>
+                            </label>
+                          </th>
+                          <td mat-cell *matCellDef=""> 
+                            <label class="custom-control custom-control-primary custom-checkbox">
+                              <input class="custom-control-input" type="checkbox">
+                              <span class="custom-control-indicator"></span>
+                            </label>
+                          </td>
+                        </ng-container> -->
+                      
+                        <ng-container matColumnDef="catId">
+                          <th mat-header-cell *matHeaderCellDef> ID </th>
+                          <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+                        </ng-container>
+                        
+                        <ng-container matColumnDef="name">
+                          <th mat-header-cell *matHeaderCellDef> Name </th>
+                          <td mat-cell *matCellDef="let element"> {{element.sub_cat_name}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="image">
+                          <th mat-header-cell *matHeaderCellDef> Icon </th>
+                          <td  mat-cell *matCellDef="let element"> 
+                            <img *ngIf="element.sub_cat_image" src="http://ip{{element.sub_cat_image}}" style="width: 30px;height:30px;"> 
+                            <img *ngIf="!element.sub_cat_image" src="assets/img/upload_icon.png" style="width: 30px;height:30px;">
+                          </td>
+                        </ng-container>
+
+                        <!-- <ng-container matColumnDef="allocated">
+                          <th mat-header-cell *matHeaderCellDef> Allocated to Category </th>
+                          <td mat-cell *matCellDef="let element"> {{element.allocated}}</td>
+                        </ng-container> -->
+                      
+                        <!-- <ng-container matColumnDef="business">
+                          <th mat-header-cell *matHeaderCellDef> Business</th>
+                          <td mat-cell *matCellDef="let element"> {{element.business}} </td>
+                        </ng-container> -->
+                        
+                        <ng-container matColumnDef="action">
+                          <th mat-header-cell *matHeaderCellDef class="wpx-140"> Action </th>
+                          <td mat-cell *matCellDef="let element"> 
+                            <ng-container class="d-flex">
+                              <!-- <button type="button" class="btn btn-sm btn-primary" routerLink="/home/view-user-management/{{element.id}}"><i class="fa fa-eye"></i></button> -->
+                              <button type="button" class="btn btn-sm btn-primary" data-target="#edit-modal" data-toggle="modal" id="{{element.id}}" (click)="fetchData(element.id)"><i class="fa fa-pencil"></i></button>
+                              <button *ngIf="element.is_active" type="button" class="btn btn-sm btn-danger" data-target="#block-modal" data-toggle="modal" id="{{element.id}}" (click)="idShift(element.id)"><i class="fa fa-ban">Block</i></button>
+                              <button *ngIf="!element.is_active" type="button" class="btn btn-sm btn-success" data-target="#unblock-modal" data-toggle="modal" id="{{element.id}}" (click)="idShift(element.id)"><i class="fa fa-ban">Unblock</i></button>
+
+                              <!-- <button type="button" class="btn btn-sm btn-primary" data-target="#edit-modal" data-toggle="modal"><i class="fa fa-pencil"></i></button> -->
+                              <!-- <button type="button" class="btn btn-sm btn-danger d-none" data-target="#unblock-modal" data-toggle="modal"><i class="fa fa-toggle-off"></i></button> -->
+                              <!-- <button type="button" class="btn btn-sm btn-success" data-target="#block-modal" data-toggle="modal"><i class="fa fa-toggle-on"></i></button> -->
+                              <!-- <button type="button" class="btn btn-sm btn-danger" data-target="#delete-modal" data-toggle="modal"><i class="fa fa-trash-o"></i></button> -->
+                            </ng-container>
+                          </td>
+                        </ng-container>
+                      
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                      </table>
+                      <mat-paginator [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons></mat-paginator>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</div>
+<!-- Delete -->
+<div id="delete-modal" class="modal fade">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="text-center">
+          <div class="h2 text-success">
+            <i class="fa fa-trash-o"></i>
+          </div>
+          <h4>Are you sure you want to delete this sub category?</h4>
+          <div class="m-t-lg">
+            <button class="btn btn-danger" data-dismiss="modal" type="button" data-toggle="modal" data-target="#deleted-success">Yes</button>
+            <button class="btn btn-success" data-dismiss="modal" type="button">No</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>      
+</div>
+<!-- Delete -->
+<!-- Delete Confirm-->
+<div class="modal fade" id="deleted-success">
+  <div class="modal-dialog modal-sm" data-dismiss="modal">
+    <div class="modal-content">      
+      <div class="modal-body" style="text-align: center;">
+        <div class="h2 text-success">
+          <i class="fa fa-check-circle"></i>
+        </div>
+        <h4>Deleted Successfully!</h4>
+      </div>         
+    </div>
+  </div>
+</div>
+<!-- Delete Confirm-->
+<!-- block -->
+<div id="block-modal" class="modal fade">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="text-center">
+          <div class="h2 text-success">
+            <i class="fa fa-toggle-on"></i>
+          </div>
+          <h4>Are you sure you want to block this sub category?</h4>
+          <div class="m-t-lg">
+            <button class="btn btn-danger" data-dismiss="modal" type="button" (click)="blockSubCat()">Yes</button>
+            <button class="btn btn-success" data-dismiss="modal" type="button">No</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>      
+</div>
+<!-- block -->
+<!-- block Confirm-->
+<div class="modal fade" id="block-success">
+  <div class="modal-dialog modal-sm" data-dismiss="modal">
+    <div class="modal-content">      
+      <div class="modal-body" style="text-align: center;">
+        <div class="h2 text-success">
+          <i class="fa fa-check-circle"></i>
+        </div>
+        <h4>Blocked Successfully!</h4>
+      </div>         
+    </div>
+  </div>
+</div>
+<!-- unblock Confirm-->
+<!-- unblock -->
+<div id="unblock-modal" class="modal fade">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="text-center">
+          <div class="h2 text-danger">
+            <i class="fa fa-toggle-off"></i>
+          </div>
+          <h4>Are you sure you want to unblock this sub category?</h4>
+          <div class="m-t-lg">
+            <button class="btn btn-danger" data-dismiss="modal" type="button" (click)="unblockSubCat()">Yes</button>
+            <button class="btn btn-success" data-dismiss="modal" type="button">No</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>      
+</div>
+<!-- unblock -->
+<!-- unblock Confirm-->
+<div class="modal fade" id="unblock-success">
+  <div class="modal-dialog modal-sm" data-dismiss="modal">
+    <div class="modal-content">      
+      <div class="modal-body" style="text-align: center;">
+        <div class="h2 text-success">
+          <i class="fa fa-check-circle"></i>
+        </div>
+        <h4>Unblocked Successfully!</h4>
+      </div>         
+    </div>
+  </div>
+</div>
+<!-- unblock Confirm-->
+<!-- add subcategory -->
+<div id="add-modal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-primary">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h4 class="modal-title">Add Subcategory</h4>
+      </div>
+      <div class="modal-body provider-detail">
+        <!-- <form class="form"> -->
+          <div class="row">
+            <div class="col-sm-5 col-md-4 col-lg-4 form-group text-center">
+              <label>Upload Image</label>
+              <!-- <img [src]="addImgURL" class="img-responsive m-b-20 mxh-150 mx-auto" *ngIf="addImgURL"> -->
+              <!-- <img src="assets/img/upload_icon.png" *ngIf="!addImgURL" class="img-responsive m-b-20 mx-auto"> -->
+              <img src="assets/img/upload_icon.png" id="imagefile" class="img-responsive m-b-20 mx-auto"/>
+              <label class="fileBtn">
+                Upload Image
+                <!-- <input #file type="file" accept='image/*' (change)="addCateImg(file.files)"> -->
+                <input type="file" accept="image/*" (change)="singleFiles($event)">
+              </label>
+            </div> 
+            <div class="col-sm-7 col-md-8 col-lg-8">
+              <!-- <div class="form-group">
+                <label>Sub Category ID</label>
+                <input type="text" class="form-control" placeholder="Auto Generated"/>
+              </div> -->
+              <div class="form-group">
+                <label>Subcategory Name</label>
+                <input [(ngModel)]="subcatname" type="text" class="form-control" placeholder="Enter Category Name"/>
+              </div>
+              <!-- <div class="form-group">
+                <label>Add Type</label>
+                <select class="form-control">
+                  <option value="Business">Business</option>
+                  <option value="Event">Event</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Add Business Type</label>
+                <select class="form-control">
+                  <option value="Restaurant">Restaurant</option>
+                  <option value="Grocery">Grocery</option>
+                  <option value="Loundry">Loundry</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Add Event Type</label>
+                <select class="form-control">
+                  <option value="Music Festival">Music Festival</option>
+                  <option value="Fashion Show">Fashion Show</option>
+                  <option value="Party">Party</option>
+                  <option value="So on">So on</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <h5>Added Sub Categories</h5>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Sub Category Name</th>
+                      <th>Business Type</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Sub Category 1</td>
+                      <td>Business 1</td>
+                      <td><button type="button" class="btn btn-sm btn-danger"><i class="fa fa-trash-o"></i></button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div> -->
+            </div>
+            <div class=" col-sm-12 col-md-12 text-center">
+              <button class="btn btn-primary" type="button" data-dismiss="modal" (click)="addSubCat()">Submit</button>
+              <!-- <button class="btn btn-success" type="button">Add More</button> -->
+              <button class="btn btn-danger" type="button" data-dismiss="modal">Cancel</button>
+            </div>
+          </div>
+        <!-- </form>   -->
+      </div>
+    </div>
+  </div>      
+</div> 
+<!-- add category -->
+<!-- edit category -->
+<div id="edit-modal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-primary">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h4 class="modal-title">Edit Sub Category</h4>
+      </div>
+      <div class="modal-body provider-detail">
+        <!-- <form class="form"> -->
+          <div class="row">
+            <div class="col-sm-5 col-md-4 col-lg-4 form-group text-center">
+              <label>Upload Image</label>
+              <!-- <img [src]="editImgURL" class="img-responsive m-b-20 mxh-150 mx-auto" *ngIf="editImgURL"> -->
+              <!-- <img src="assets/img/upload_icon.png" *ngIf="!editImgURL" class="img-responsive m-b-20 mx-auto"> -->
+              <!-- <div *ngIf="profileimg">
+                  <img src="http://15.206.103.12{{profileimg}}" id="imagefile" style="border-radius:100%;width:70px;height: 70px;margin-bottom: 10px;"/>
+                </div>
+                <div *ngIf="!profileimg">
+                  <img src="assets/img/sampleuser.png" id="imagefile" style="border-radius:100%;width:70px;height: 70px;margin-bottom: 10px;"/>
+                </div> -->
+              <img *ngIf="e_element['sub_cat_image']" src="http://ip{{e_element['sub_cat_image']}}" id="imagefile1" class="img-responsive m-b-20 mx-auto"/>
+              <img *ngIf="!e_element['sub_cat_image']" src="assets/img/upload_icon.png" id="imagefile1" class="img-responsive m-b-20 mx-auto"/>
+              <label class="fileBtn">
+                Upload Image
+                <!-- <input #file1 type="file" accept='image/*' (change)="editCateImg(file1.files)"> -->
+                <input type="file" accept="image/*" (change)="singleFiles1($event)">
+              </label>
+            </div> 
+            <div class="col-sm-7 col-md-8 col-lg-8">
+              <!-- <div class="form-group">
+                <label>Sub Category ID</label>
+                <input type="text" class="form-control" placeholder="Auto Generated"/>
+              </div> -->
+              <div class="form-group">
+                <label>Sub Category Name</label>
+                <input [(ngModel)]="e_subcatname" type="text" class="form-control" value="{{e_element['sub_cat_name']}}"/>
+              </div>
+              <!-- <div class="form-group">
+                <label>Add Type</label>
+                <select class="form-control">
+                  <option value="Business">Business</option>
+                  <option value="Event">Event</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Add Business Type</label>
+                <select class="form-control">
+                  <option value="Restaurant">Restaurant</option>
+                  <option value="Grocery">Grocery</option>
+                  <option value="Loundry">Loundry</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Add Event Type</label>
+                <select class="form-control">
+                  <option value="Music Festival">Music Festival</option>
+                  <option value="Fashion Show">Fashion Show</option>
+                  <option value="Party">Party</option>
+                  <option value="So on">So on</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <h5>Added Sub Categories</h5>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Sub Category Name</th>
+                      <th>Business Type</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Sub Category 1</td>
+                      <td>Business 1</td>
+                      <td><button type="button" class="btn btn-sm btn-danger"><i class="fa fa-trash-o"></i></button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div> -->
+            </div>   
+            <div class=" col-sm-12 col-md-12 text-center">
+              <button class="btn btn-primary" type="button" data-dismiss="modal" (click)="editSubCat()">Submit</button>
+              <!-- <button class="btn btn-success" type="button">Add More</button> -->
+              <button class="btn btn-danger" type="button" data-dismiss="modal">Cancel</button>
+            </div>
+          </div>
+        <!-- </form>   -->
+      </div>
+    </div>
+  </div>       
+</div> 
+<!-- edit category -->
+<!-- add Confirm-->
+<div class="modal fade" id="add-success">
+  <div class="modal-dialog modal-sm" data-dismiss="modal">
+    <div class="modal-content">      
+      <div class="modal-body" style="text-align: center;">
+        <div class="h2 text-success">
+          <i class="fa fa-check-circle"></i>
+        </div>
+        <h4>Sub Category added successfully!</h4>
+      </div>         
+    </div>
+  </div>
+</div>
+<!-- add Confirm-->

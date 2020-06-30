@@ -1,0 +1,123 @@
+<app-header></app-header>
+<div class="layout-main">
+  <app-left-sidebar></app-left-sidebar>
+  <div class="profilePage"></div>
+  <div class="layout-content">
+    <div class="layout-content-body">
+      <div class="title-bar">
+        <h1 class="title-bar-title">
+          <span class="d-ib">Edit Profile </span>
+          <a routerLink="/home/profile" class="h5 pull-right text-primary">Back to Profile</a>
+        </h1>
+      </div>
+      <div class="col-md-12">
+        <span style="color:red;margin-top: 5px">{{errormessage}}</span>
+      </div>
+      <div class="col-md-12">
+        <span style="color:green;margin-top: 5px">{{successmessage}}</span>
+      </div>
+      <div class="col-md-8 card panel-body" style="box-shadow: 0px 0px 14px #999;">
+        <div class="demo-form-wrapper">
+          <p *ngIf="errorMessage">{{errorMessage}}</p>
+          <form class="form" [formGroup]="profileForm" (ngSubmit)="onSubmit()" autocomplete="off">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label class=" control-label">Name</label>
+                <input class="form-control" type="text" formControlName="name" (ngClass)="{'is-invalid': submitted && f.name.errors}">
+                <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                  <div *ngIf="f.name.errors.required">Name is required.</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label class="control-label">Email ID</label>
+                <input class="form-control" readonly type="email" formControlName="email" (ngClass)="{'is-invalid': submitted && f.email.errors}">
+                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                  <div *ngIf="f.email.errors.required">Email is required.</div>
+                  <div *ngIf="f.email.errors.email">Enter must be a valid email address.</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+                
+              <div class="form-group">
+                <label class=" control-label">Mobile Number</label>
+                <input class="form-control" type="text" formControlName="phone" 
+                onkeypress= "return event.charCode >= 48 && event.charCode <= 57"
+                (ngClass)="{'is-invalid': submitted && f.phone.errors}">
+                <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+                  <div *ngIf="f.phone.errors.required">Mobile number is required.</div>
+                  <div *ngIf="f.phone.errors?.minlength">Mobile number should be atleast 8 numbers.</div>
+                  <div *ngIf="f.phone.errors?.maxlength">Mobile number should be atmost 12 numbers.</div>
+                </div>
+              </div>
+            </div>
+            <!-- <div class="col-md-6">
+              <div class="form-group">
+                <label class=" control-label">Address</label>
+                <input class="form-control" type="text" formControlName="address" (ngClass)="{'is-invalid': submitted && f.address.errors}">
+                <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+                  <div *ngIf="f.address.errors.required">Address is required.</div>
+                </div>
+              </div>
+            </div> -->
+            <!-- <div class="col-md-6">
+              <div class="form-group">
+                <label class=" control-label">Region</label>
+                <select class="form-control" formControlName="region" (ngClass)="{'is-invalid': submitted && f.region.errors}">
+                  <option hidden=""></option>
+                  <option *ngFor="let region of regions" value={{region}}>
+                    {{region}}
+                  </option>
+                </select>
+                <mat-select-country  class="countryList" (onCountrySelected)="onCountrySelected($event)"></mat-select-country>
+                <mat-select-country  class="countryList" selectedCountry = 'selectedCountry' (onCountrySelected)="onCountrySelected($event)"></mat-select-country>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                <label class=" control-label">Description</label>
+                <textarea class="form-control" rows="4" formControlName="description"></textarea>
+              </div>
+            </div>-->
+            <div class="col-md-12">
+              <div class="form-group add-pic">
+                <label class="control-label">Add Image</label>
+                <div class="pic-box">
+                  <div class="logoImg">
+                      <img *ngIf="!profile_image" src="assets/img/user1.jpg" id="frontImg">
+                    <img *ngIf="profile_image" src="http://ip{{profile_image}}" id="frontImg">
+                    <input id="logo-file" type="file" class="hide" (change)="frontFiles($event)">
+                    <label for="logo-file" class="btn btn-large"></label>
+                  </div>
+                </div>
+              </div>
+            </div> 
+
+            
+            <div class=" col-sm-12">
+              <div class="form-group">
+                <button class="btn btn-primary" type="submit">Submit</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>
+
+
+<!-- Modal -->
+<div class="modal fade" id="success-modal">
+  <div class="modal-dialog modal-sm" data-dismiss="modal">
+    <div class="modal-content">
+      <div class="modal-body text-center">
+        <h2><i class="fa fa-check-circle text-success"></i></h2>
+        <h5>{{successMessage}}!</h5>
+      </div>
+    </div>
+  </div>
+</div>

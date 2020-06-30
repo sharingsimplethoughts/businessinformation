@@ -1,0 +1,105 @@
+<div class="layout-sidebar">
+  <div class="layout-sidebar-backdrop"></div>
+  <div class="layout-sidebar-body">
+    <div class="custom-scrollbar">
+      <nav id="sidenav" class="sidenav-collapse collapse">
+        <ul class="sidenav">
+          <li class="sidenav-heading">Navigation</li>
+          <li class="sidenav-item dashboardNav" routerLinkActive="active">
+            <a routerLink="/home/dashboard">
+              <span class="sidenav-icon icon icon-home"></span>
+              <span class="sidenav-label">Dashboard</span>
+            </a>
+          </li>
+          <li class="sidenav-item subadminNav" routerLinkActive="active">
+            <a routerLink="/home/sub-admin-management">
+              <span class="sidenav-icon icon icon-user-secret"></span>
+              <span class="sidenav-label">Sub Admin Management</span>
+            </a>
+          </li>
+          <li class="sidenav-item userNav" routerLinkActive="active">
+            <a routerLink="/home/user-management">
+              <span class="sidenav-icon icon icon-user"></span>
+              <span class="sidenav-label">User Management</span>
+            </a>
+          </li>
+          <!-- <li class="sidenav-item serviceNav" routerLinkActive="active">
+            <a href="javascript:void(0)">
+              <span class="sidenav-icon icon icon-building-o"></span>
+              <span class="sidenav-label">Business</span>
+            </a>
+            <ul class="sidenav-subnav collapse">
+              <li class="orderNav-a"><a routerLink="/home/business-management">Business Management</a></li>
+              <li class="orderNav-a"><a routerLink="/home/near-by-search">Near by Search</a></li>
+            </ul>
+          </li> -->
+
+          <li class="sidenav-item has-subnav orderNav">
+            <a href="javascript:void(0)">
+              <span class="sidenav-icon icon icon-list"></span>
+              <span class="sidenav-label">Business Management</span>
+            </a>
+            <ul class="sidenav-subnav collapse">
+              <li class="orderNav-a"><a routerLink="/home/business-management">Business</a></li>
+              <li class="orderNav-b"><a routerLink="/home/near-by-search">Near by Search</a></li>
+            </ul>
+          </li>
+
+
+          <li class="sidenav-item eventNav" routerLinkActive="active">
+            <a routerLink="/home/event-management">
+              <span class="sidenav-icon icon icon-calendar"></span>
+              <span class="sidenav-label">Event Management</span>
+            </a>
+          </li>
+          <li class="sidenav-item has-subnav orderNav">
+            <a href="javascript:void(0)">
+              <span class="sidenav-icon icon icon-list"></span>
+              <span class="sidenav-label">Category Management</span>
+            </a>
+            <ul class="sidenav-subnav collapse">
+              <li class="orderNav-a"><a routerLink="/home/category-management">Category</a></li>
+              <li class="orderNav-b"><a routerLink="/home/sub-category-management">Sub Category</a></li>
+            </ul>
+          </li>
+          <li class="sidenav-item rewardNav" routerLinkActive="active">
+            <a routerLink="/home/language-management">
+              <span class="sidenav-icon icon icon-language"></span>
+              <span class="sidenav-label">Language Management</span>
+            </a>
+          </li>
+          <li class="sidenav-item reportNav" routerLinkActive="active">
+            <a routerLink="/home/report-management">
+              <span class="sidenav-icon icon icon-line-chart"></span>
+              <span class="sidenav-label">Report</span>
+            </a>
+          </li>
+          <li class="sidenav-item notificationsNav" routerLinkActive="active">
+            <a routerLink="/home/notifications">
+              <span class="sidenav-icon icon icon-bell"></span>
+              <span class="sidenav-label">Notifications</span>
+            </a>
+          </li>
+          <li class="sidenav-item announcementNav" routerLinkActive="active">
+            <a routerLink="/home/announcement-management">
+              <span class="sidenav-icon icon icon-bullhorn"></span>
+              <span class="sidenav-label">Announcement Management</span>
+            </a>
+          </li>
+          <li class="sidenav-item supportNav" routerLinkActive="active">
+            <a routerLink="/home/support">
+              <span class="sidenav-icon icon icon-phone"></span>
+              <span class="sidenav-label">Support</span>
+            </a>
+          </li>
+          <li class="sidenav-item settingNav" routerLinkActive="active">
+            <a routerLink="/home/setting">
+              <span class="sidenav-icon icon icon-cog"></span>
+              <span class="sidenav-label">Setting</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>

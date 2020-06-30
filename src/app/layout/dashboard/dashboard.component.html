@@ -1,0 +1,338 @@
+<app-header></app-header>
+<div class="layout-main">
+  <app-left-sidebar></app-left-sidebar>
+  <div class="layout-content">
+    <div class="layout-content-body">
+      <div class="title-bar">
+        <h1 class="title-bar-title">
+          <span class="d-ib">Dashboard</span>
+        </h1>
+      </div>
+      <div class="row gutter-xs">
+        <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3 form-group">
+          <label>From : </label> 
+          <div class="date">
+            <ng-datepicker class="w-100" (ngModelChange)="fromDate($event)" [(ngModel)]="fromdate" [options]="optionsFrom" [ngModelOptions]="{standalone: true}"></ng-datepicker>
+            <i class="fa fa-calendar ml-2 fs-18"></i>
+          </div>
+        </div>
+        <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3 form-group">
+          <label>To : </label>  
+          <div class="date">
+            <ng-datepicker class="w-100" [(ngModel)]="todate" [options]="optionsTo" [ngModelOptions]="{standalone: true}"></ng-datepicker>
+            <i class="fa fa-calendar ml-2 fs-18"></i>
+          </div>
+        </div>
+        <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3 form-group">
+          <label>Region</label>
+          <select class="form-control">
+            <option value="" hidden>Choose</option>
+            <option value="India">India</option>
+            <option value="USA">USA</option>
+          </select>
+        </div>
+        <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3 form-group">
+          <label>Duration</label>
+          <select class="form-control">
+            <option value="" hidden>Choose</option>
+            <option value="This Week">This Week</option>
+            <option value="This Month">This Month</option>
+            <option value="This Year">This Year</option>
+          </select>
+        </div>
+      </div>
+      <div class="row gutter-xs">
+        <div class="col-xs-6 col-sm-3 col-md-2 col-lg-2 form-group">
+          <label>Age Group</label>
+          <select class="form-control">
+            <option value="" hidden>Choose</option>
+            <option value="10-20">10-20</option>
+            <option value="21-30">21-30</option>
+            <option value="31-30">21-40</option>
+          </select>
+        </div>
+        <div class="col-xs-6 col-sm-3 col-md-2 col-lg-2 form-group">
+          <label>Location</label>
+          <input type="text" class="form-control" placeholder="Search"/>
+        </div>
+        <div class="col-xs-6 col-sm-3 col-md-2 col-lg-2 form-group">
+          <label>Gender</label>
+          <select class="form-control">
+            <option value="" hidden>Choose</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+        </div>
+        <div class="col-xs-6 col-sm-3 col-md-2 col-lg-2 form-group">
+          <label>Intrested</label>
+          <select class="form-control">
+            <option value="" hidden>Choose</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
+        </div>
+        <div class="col-xs-6 col-sm-3 col-md-2 col-lg-2 form-group">
+          <label>Activities</label>
+          <select class="form-control">
+            <option value="" hidden>Choose</option>
+            <option value="Activities 1">Activities 1</option>
+            <option value="Activities 2">Activities 2</option>
+          </select>
+        </div>
+      </div>
+      <div class="row gutter-xs">
+        <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+          <div class="row gutter-xs height-box">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 full-height">
+              <div class="card">
+                <div class="card-body">
+                  <div class="media">
+                    <div class="media-middle media-left">
+                      <span class="bg-primary circle sq-48">
+                        <span class="icon icon-user"></span>
+                      </span>
+                    </div>
+                    <div class="media-middle media-body">
+                      <h6 class="media-heading">Total Registerd Users</h6>
+                      <h3 class="media-heading">
+                        <span class="fw-l">1,031K</span>
+                      </h3>
+                      <h5 class="media-heading">
+                        <span class="fw-l">131K ,<span class="ml-2">18+ Age Group</span></span>
+                      </h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 full-height">
+              <div class="card">
+                <div class="card-body">
+                  <div class="media">
+                    <div class="media-middle media-left">
+                      <span class="bg-danger circle sq-48">
+                        <span class="icon icon-smile-o"></span>
+                      </span>
+                    </div>
+                    <div class="media-middle media-body">
+                      <h6 class="media-heading">User who have customized businesss</h6>
+                      <h3 class="media-heading">
+                        <span class="fw-l">256K</span>
+                      </h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 full-height">
+              <div class="card">
+                <div class="card-body">
+                  <div class="media">
+                    <div class="media-middle media-left">
+                      <span class="bg-primary circle sq-48">
+                        <span class="icon icon-star-o"></span>
+                      </span>
+                    </div>
+                    <div class="media-middle media-body">
+                      <h6 class="media-heading">App Ratings</h6>
+                      <h3 class="media-heading">
+                        <span class="fw-l">4.5</span>
+                      </h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 full-height">
+              <div class="card">
+                <div class="card-body">
+                  <div class="media">
+                    <div class="media-middle media-left">
+                      <span class="bg-danger circle sq-48">
+                        <span class="icon icon-language"></span>
+                      </span>
+                    </div>
+                    <div class="media-middle media-body">
+                      <h6 class="media-heading">Most Translated Language</h6>
+                      <h3 class="media-heading">
+                        <span class="fw-l">SPANISH</span>
+                      </h3>
+                      <h6 class="media-heading">Translated Into Language</h6>
+                    </div>
+                    <div class="row gutter-xs">
+                      <div class="col-xs-12 col-sm-6 col-md-6">
+                        <h6>Hindi</h6>
+                        <div class="progress mt-2 mb-0"><div class="progress-bar bg-danger" style="width: 35%;"></div></div>
+                      </div>
+                      <div class="col-xs-12 col-sm-6 col-md-6">
+                        <h6>English</h6>
+                        <div class="progress mt-2 mb-0"><div class="progress-bar bg-danger" style="width: 35%;"></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 full-height">
+              <div>
+                <div class="card">
+                  <div class="card-body">
+                    <div class="media">
+                      <!-- <div class="media-middle media-left">
+                        <span class="bg-danger circle sq-48">
+                          <span class="icon icon-language"></span>
+                        </span>
+                      </div> -->
+                      <div class="media-middle media-body">
+                        <h5 class="media-heading">Pending Request</h5>
+                        <h3 class="media-heading">201K</h3>
+                        <div class="progress mt-2"><div class="progress-bar bg-danger" style="width: 25%;"></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>              
+                <div class="card mt-4">
+                  <div class="card-body">
+                    <div class="media">
+                      <!-- <div class="media-middle media-left">
+                        <span class="bg-danger circle sq-48">
+                          <span class="icon icon-language"></span>
+                        </span>
+                      </div> -->
+                      <div class="media-middle media-body">
+                        <div class="row gutter-xs">
+                          <div class="col-xs-12 col-sm-12 col-md-12">
+                            <h5 class="media-heading">Most Viewed Events</h5>
+                          </div>
+                          <div class="col-xs-12 col-sm-6 col-md-6">
+                            <h6>Delhi</h6>
+                            <div class="progress mt-2 mb-0"><div class="progress-bar bg-danger" style="width: 30%;"></div></div>
+                          </div>
+                          <div class="col-xs-12 col-sm-6 col-md-6">
+                            <h6>Mumbai</h6>
+                            <div class="progress mt-2 mb-0"><div class="progress-bar bg-danger" style="width: 30%;"></div></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 full-height">
+              <div class="card">
+                <div class="card-body">
+                  <div class="media">
+                    <h5 class="bg-primary padding-10"><i class="fa fa-line-chart mr-1"></i>Traffic On User App</h5>
+                    <canvas baseChart
+                      [data]="doughnutChartData"
+                      [labels]="doughnutChartLabels"
+                      [chartType]="doughnutChartType">
+                    </canvas>
+                    <h6 class="mb-0 mt-2 text-center">Active Users: 145K</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 full-height">
+              <div>
+                <h5>Most Recent Added Events</h5>
+                <div class="padding-10 col-xs-12 card bxs-5">
+                  <div class="row gutter-xs">
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                      <label>Event Name</label>
+                      <h6>Location</h6>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                      <div><label class="mr-2">Start On</label> 09:00 PM</div>
+                      <div><label class="mr-2">End On</label> 12:00 PM</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="padding-10 col-xs-12 card bxs-5">
+                  <div class="row gutter-xs">
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                      <label>Event Name</label>
+                      <h6>Location</h6>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                      <div><label class="mr-2">Start On</label> 09:00 PM</div>
+                      <div><label class="mr-2">End On</label> 12:00 PM</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 full-height">
+              <div>
+                <h5>Most Recent Added Business</h5>
+                <div class="padding-10 card col-xs-12 bxs-5">
+                  <label>Business Name</label>
+                  <h6>Location</h6>
+                </div>
+                <div class="padding-10 card col-xs-12 bxs-5">
+                  <label>Business Name</label>
+                  <h6>Location</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 full-height">
+          <div class="row gutter-xs">
+            <div class="card col-xs-12 col-sm-6 col-md-12">
+              <div class="card-body">
+                <h5 class="media-heading mb-3">Last Preffered Language</h5>
+                <h6>French</h6>
+                <div class="progress mt-1 mb-2"><div class="progress-bar bg-danger" style="width: 35%;"></div></div>
+                <h6>Japanese</h6>
+                <div class="progress mt-1 mb-2"><div class="progress-bar bg-danger" style="width: 35%;"></div></div>
+                <h6>Chinese</h6>
+                <div class="progress mt-1 mb-2"><div class="progress-bar bg-danger" style="width: 35%;"></div></div>
+              </div>
+            </div>
+            <div class="card col-xs-12 col-sm-6 col-md-12">
+              <div class="card-body">
+                <h5 class="media-heading mb-3">Most Preffered Language</h5>
+                <h6>French</h6>
+                <div class="progress mt-1 mb-2"><div class="progress-bar bg-danger" style="width: 35%;"></div></div>
+                <h6>Japanese</h6>
+                <div class="progress mt-1 mb-2"><div class="progress-bar bg-danger" style="width: 35%;"></div></div>
+                <h6>Chinese</h6>
+                <div class="progress mt-1 mb-2"><div class="progress-bar bg-danger" style="width: 35%;"></div></div>
+              </div>
+            </div>
+            <div class="card col-xs-12 col-sm-6 col-md-12">
+              <div class="card-body">
+                <h5 class="media-heading mb-3">Most Viewed Place</h5>
+                <h6>Delhi</h6>
+                <div class="progress mt-1 mb-2"><div class="progress-bar bg-danger" style="width: 35%;"></div></div>
+                <h6>Mumbai</h6>
+                <div class="progress mt-1 mb-2"><div class="progress-bar bg-danger" style="width: 35%;"></div></div>
+                <h6>Jaipur</h6>
+                <div class="progress mt-1 mb-2"><div class="progress-bar bg-danger" style="width: 35%;"></div></div>
+              </div>
+            </div>
+            <div class="card col-xs-12 col-sm-6 col-md-12">
+              <div class="card-body">
+                <div class="media">
+                  <h5 class="bg-primary padding-10"><i class="fa fa-line-chart mr-1"></i>Performance</h5>
+                  <canvas baseChart width="100%"
+                    [datasets]="lineChartData"
+                    [labels]="lineChartLabels"
+                    [options]="lineChartOptions"
+                    [colors]="lineChartColors"
+                    [legend]="lineChartLegend"
+                    [chartType]="lineChartType"
+                    [plugins]="lineChartPlugins">
+                  </canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

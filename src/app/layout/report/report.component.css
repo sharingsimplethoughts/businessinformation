@@ -1,0 +1,48 @@
+
+.tabs {
+  width: 100%;
+}
+.tabs-nav{
+  list-style: none;
+  padding: 0;
+}
+.tabs-nav li {
+  float: left;
+}
+.tabs-nav li:first-child a {
+  border-right: 0;
+  border-top-left-radius: 6px;
+}
+.tabs-nav li:last-child a {
+  border-top-right-radius: 6px;
+  border-right: 0 !important;
+}
+.tabs-nav a {
+  background: #eaeaed;
+  color: #000;
+  display: block;
+  font-weight: 600;
+  border-right: 1px solid #e1dcdc;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+}
+.tabs-nav a:hover {
+  color: #000;
+}
+.tab-active a {
+  background: #A440FF;
+  border-bottom-color: transparent;
+  color: #fff;
+  padding: 10px 20px;
+  cursor: default;
+}
+.tabs-stage {
+  border: 1px solid #fff;
+  border-radius: 0 0 6px 6px;
+  border-top: 0;
+  clear: both;
+  padding: 24px 30px;
+  position: relative;
+  top: -1px;
+}

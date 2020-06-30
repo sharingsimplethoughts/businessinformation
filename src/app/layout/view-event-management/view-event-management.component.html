@@ -1,0 +1,70 @@
+<app-header></app-header>
+<div class="layout-main">
+  <app-left-sidebar></app-left-sidebar>
+  <div class="subadminPage"></div>
+  <div class="layout-content">
+    <div class="layout-content-body">
+      <div class="title-bar">
+        <h1 class="title-bar-title">
+          <span class="d-ib">View Event Management </span>
+          <!-- <a routerLink="/home/profile" class="h5 pull-right text-primary">Back to Sub-admin management</a> -->
+        </h1>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 card panel-body" style="box-shadow: 0px 0px 14px #999;">
+        <div class="demo-form-wrapper">
+          <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6">
+              <label class=" control-label">Event ID</label>
+              <p>{{eventdetail.id}}</p>
+              <label class=" control-label">Event Name</label>
+              <p>{{eventdetail.event_name}}</p>
+              <label class=" control-label">Event Category</label>
+              <p>{{eventdetail.event_category}}</p>              
+              <label class=" control-label">Event Sub-Category</label>
+              <p>{{eventdetail.event_sub_category}}</p>
+              <label class="control-label">Event Email ID</label>
+              <p>{{eventdetail.event_email}}</p>
+              <label class=" control-label">Event Mobile Number</label>
+              <p>{{eventdetail.event_contact_number}}</p>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6">
+              <label class=" control-label">Event Location</label>
+              <!-- <p>{{eventdetail.lat}}/{{eventdetail.lon}}</p> -->
+<!-- <input type="text" class="form-control" autocorrect="off" autocapitalize="off" spellcheck="off"> -->
+<agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
+<agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+</agm-map>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <h5 class="mt-3">Event Timings</h5>
+                <label class=" control-label">Event Date</label>
+                <p>{{eventdetail.event_start_date}} - {{eventdetail.event_end_date}}</p>
+                <label class=" control-label">Event Time</label>
+                <p>{{eventdetail.event_start_time}} - {{eventdetail.event_end_time}}</p>
+
+              <label class="avatar-file sq-100 mb-3 mr-3">
+                <img *ngIf="eventdetail.event_image1" src="http://ip{{eventdetail.event_image1}}"/>
+                <img *ngIf="!eventdetail.event_image1" src="assets/img/user1.jpg"/>
+              </label>
+              <label class="avatar-file sq-100 mb-3 mr-3">
+                <img *ngIf="eventdetail.event_image2" src="http://ip{{eventdetail.event_image2}}"/>
+                <img *ngIf="!eventdetail.event_image2" src="assets/img/user1.jpg"/>
+              </label>
+              <label class="avatar-file sq-100 mb-3 mr-3">
+                <img *ngIf="eventdetail.event_image3" src="http://ip{{eventdetail.event_image3}}"/>
+                <img *ngIf="!eventdetail.event_image3" src="assets/img/user1.jpg"/>
+              </label>
+              <label class="avatar-file sq-100 mb-3 mr-3">
+                <img *ngIf="eventdetail.event_image4" src="http://ip{{eventdetail.event_image4}}"/>
+                <img *ngIf="!eventdetail.event_image4" src="assets/img/user1.jpg"/>
+              </label><br>
+              <label class=" control-label">Event Description</label>
+              <p>{{eventdetail.event_description}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

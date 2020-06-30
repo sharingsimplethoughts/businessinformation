@@ -1,0 +1,179 @@
+<app-header></app-header>
+<div class="layout-main">
+<app-left-sidebar></app-left-sidebar>
+<div class="settingsPage"></div>
+<div class="layout-content">
+  <div class="layout-content-body">
+    <div class="title-bar">
+      <h1 class="title-bar-title">
+        <span class="d-ib">Setting</span>
+      </h1>
+    </div>
+    <div class="col-md-12">
+        <span style="color:red;margin-top: 5px">{{errormessage}}</span>
+    </div>
+    <div class="col-md-12">
+        <span style="color:green;margin-top: 5px">{{successmessage}}</span>
+    </div>
+    <div class="row gutter-xs">
+        <div class="col-md-12">
+          <div class="pcoded-content">
+              <div class="pcoded-inner-content">
+                <div class="main-body">
+                  <div class="page-wrapper">
+                    <div class="page-body">
+                      <div class="card">
+                        <div class="card-body">
+                          <h5>
+                          <button class="btn btn-primary icon icon-pencil p-1 fs-18 pull-right mb-2" (click)="fillabout()" data-target="#edit-modal" data-toggle="modal" ></button>
+                          About Us</h5>
+                          <p class="padding-top-15">{{about}}</p>
+                        </div>
+                      </div>
+                      <!--  -->
+                      <div class="card">
+                        <div class="card-body">
+                          <h5>
+                          <button class="btn btn-primary icon icon-pencil p-1 fs-18 pull-right mb-2" (click)="fillterm()" data-target="#edit-modal-term" data-toggle="modal"></button>
+                          Tearms & Conditions</h5>
+                          <p class="padding-top-15">{{terms}}</p>
+                        </div>
+                      </div>
+                      <!--  -->
+                      <div class="card">
+                        <div class="card-body">
+                          <h5>
+                          <button class="btn btn-primary icon icon-pencil p-1 fs-18 pull-right mb-2" (click)="filllegal()" data-target="#edit-modal-legal" data-toggle="modal"></button>
+                          Legal</h5>
+                          <p class="padding-top-15">{{legal}}</p>
+                        </div>
+                      </div>
+                      <div class="card">
+                        <div class="card-body">
+                          <h5>
+                          <button class="btn btn-primary icon icon-pencil p-1 fs-18 pull-right mb-2" (click)="fillhelp()" data-target="#edit-modal-help" data-toggle="modal"></button>
+                          Help</h5>
+                          <p class="padding-top-15">{{help}}</p>
+                        </div>
+                      </div>
+                      <div class="card">
+                        <div class="card-body">
+                          <h5>
+                          <button class="btn btn-primary icon icon-pencil p-1 fs-18 pull-right mb-2" (click)="fillprivacypolicy()" data-target="#edit-modal-privacy" data-toggle="modal"></button>
+                          Privacy policy</h5>
+                          <p class="padding-top-15">{{privacy}}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+  </div>
+<app-footer></app-footer>
+</div>
+
+<!-- add promotion -->
+<div id="edit-modal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <form class="form">
+          <h5>About Us</h5>
+          <textarea id="about" class="form-control" rows="4">{{about}}</textarea>
+          <div class="m-t-lg text-center">
+            <button class="btn btn-danger" data-dismiss="modal" type="button" (click)="updateAbout()">Save</button>
+            <button class="btn btn-default" data-dismiss="modal" type="button">Cancel</button>
+          </div>
+          
+        </form>
+      </div>
+    </div>
+  </div>      
+</div>
+<!-- success modal -->
+<!-- add promotion -->
+<div id="edit-modal-term" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <form class="form">
+          <h5>Terms & Condition</h5>
+          <textarea id="terms" class="form-control" rows="4">{{terms}}</textarea>
+          <div class="m-t-lg text-center">
+            <button class="btn btn-danger" data-dismiss="modal" type="button" (click)="updateTerms()">Save</button>
+            <button class="btn btn-default" data-dismiss="modal" type="button">Cancel</button>
+          </div>
+          
+        </form>
+      </div>
+    </div>
+  </div>      
+</div>
+<div id="edit-modal-legal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <form class="form">
+          <h5>Legal</h5>
+          <textarea id="legal" class="form-control" rows="4">{{legal}}</textarea>
+          <div class="m-t-lg text-center">
+            <button class="btn btn-danger" data-dismiss="modal" type="button" (click)="updateLegal()">Save</button>
+            <button class="btn btn-default" data-dismiss="modal" type="button">Cancel</button>
+          </div>
+          
+        </form>
+      </div>
+    </div>
+  </div>      
+</div>
+<div id="edit-modal-help" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <form class="form">
+          <h5>Help</h5>
+          <textarea id="help" class="form-control" rows="4">{{help}}</textarea>
+          <div class="m-t-lg text-center">
+            <button class="btn btn-danger" data-dismiss="modal" type="button" (click)="updateHelp()">Save</button>
+            <button class="btn btn-default" data-dismiss="modal" type="button">Cancel</button>
+          </div>
+          
+        </form>
+      </div>
+    </div>
+  </div>      
+</div>
+<div id="edit-modal-privacy" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <form class="form">
+          <h5>Privacy policy</h5>
+          <textarea id="privacy" class="form-control" rows="4">{{privacy}}</textarea>
+          <div class="m-t-lg text-center">
+            <button class="btn btn-danger" data-dismiss="modal" type="button" (click)="updatePrivacyPolicy()">Save</button>
+            <button class="btn btn-default" data-dismiss="modal" type="button">Cancel</button>
+          </div>
+          
+        </form>
+      </div>
+    </div>
+  </div>      
+</div>
+<!-- success modal -->
+<div id="edit-sccess-modal" class="modal fade">
+  <div class="modal-dialog modal-sm" data-dismiss="modal">
+    <div class="modal-body text-center">
+      <div class="row">
+        <div class="col-md-12">
+          <i class="text-success fs-34 d-inline-block icofont icofont-check-circled mb-4"></i>
+          <h6>Saved Successfully</h6>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
